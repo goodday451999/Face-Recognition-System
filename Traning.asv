@@ -1,0 +1,16 @@
+[fname, path]=uigetfile('Open a Face as Input for Traning','.jpg');
+fname=strcat(path,fname);
+im=imread(fname);
+imshow(im);
+title('Input Face');
+c=input('Enter the Class');
+
+F=FeatureStat(im);
+
+try
+    load db;
+    F=[F c];
+    
+catch
+    db=[F c]; 
+    
